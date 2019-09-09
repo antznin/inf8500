@@ -10,7 +10,7 @@ void copro2::pkt_display()
 		msg_valid = false; //Indique qu'il n'y a plus de paquets valides et qu'il faut recommencer un cycle
 		
 		cout << "COPRO2 : Recuperation du paquet" << endl;
-		pkt = fifo_in.read();
+		pkt = *fifo_in.read();
 
 		msg_valid = true; //Indique qu'un nouveau paquet est disponible pour le display
 		char message[100];
