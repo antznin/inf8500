@@ -9,15 +9,13 @@ void interconnexion::pkt_dispatch(void){
 	while (true)
 	{
 
+		wait(packet_ready.posedge_event()); // attendre packet_ready
+
 		//Recupération du paquet
-		/* 
-		à compléter 
-		*/
+		pkt = packet_in;
 
 		//Lecture de l'adresse du paquet
-		/* 
-		à compléter 
-		*/
+		addr = pkt.getAddress();
 
 
 		//Utiliser la bonne méthode d'envoi selon l'adresse
@@ -38,23 +36,20 @@ void interconnexion::pkt_dispatch(void){
 
 void interconnexion::pkt_send1(void){
 	
-	/* 
-	à compléter 
-	*/
-
+	packet_out1 = pkt;
+	ready1 = true;
+	wait(packet_next1.posedge_event());
+	ready1 = false;
 }
 
 void interconnexion::pkt_send2(void){
 	
-	/* 
-	à compléter 
-	*/
+	fifo_out.write(pkt);
 
 }
 
 void interconnexion::pkt_send3(void){
 	
-	/* 
-	à compléter 
-	*/
+	packet_out.write(pkt);
+	wait(packet_next3.posedge_event());
 }
