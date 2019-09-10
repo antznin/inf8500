@@ -50,6 +50,6 @@ void interconnexion::pkt_send2(void){
 
 void interconnexion::pkt_send3(void){
 	
-	packet_out.write(&pkt);
+	packet_out3.write(&pkt);
 	wait(packet_next3.posedge_event());
 }
