@@ -16,7 +16,7 @@ int i=0;
 		wait(50, SC_NS);
 
 		// Générer un nombre aléatoire entre 1 et 3.
-		nba = 1 + (rand() % (3));
+		nba = 3; // + (rand() % (3));
 		
 		// Générer un nouveau paquet et l'envoyer à un coprocesseur
 		// dont le numéro a été généré aléatoirement

@@ -9,9 +9,17 @@ SC_MODULE(copro3)
 	/* *******************************************************************
 	// MODULE PORTS
 	******************************************************************** */
-	/* 
-	à compléter 
-	*/
+
+	sc_in<Packet*> packet_in;
+	sc_out<bool> ack;
+	// Signal indiquant au display qu'il y a un message à traiter
+	sc_out<bool> msg_valid;
+	// Sortie d'une chaîne de caractères pour le display
+	sc_out<char*> output_msg;
+	// Sortie du paquet vers le display
+	sc_out<Packet*> output_pkt;
+	// Acquittement du display (Le display est prêt à afficher)
+	sc_in<bool> display_ready;
 
 	/* *******************************************************************
 	// LOCAL VARIABLES
@@ -30,9 +38,10 @@ SC_MODULE(copro3)
 	******************************************************************** */
 	SC_CTOR(copro3)
 	{
-	/* 
-	à compléter 
-	*/
+	// pkt_display est un THREAD
+		SC_THREAD(pkt_display);
+		// pkt_display est sensible à ready et à display_ready
+		sensitive << display_ready;
 
 	}
 

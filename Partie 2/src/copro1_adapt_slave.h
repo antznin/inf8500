@@ -17,6 +17,7 @@ public:
 	// MODULE PORTS
 	******************************************************************** */
 	sc_in_clk clock;
+	sc_out<Packet*> pkt_out;
 
 	//A COMPLETER
 

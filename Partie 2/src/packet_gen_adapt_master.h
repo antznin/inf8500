@@ -13,7 +13,8 @@ SC_MODULE(packet_gen_adapt_master)
 	// MODULE PORTS
 	******************************************************************** */
 	sc_in_clk clock;
-	//A COMPLETER
+	sc_in<Packet*> pkt_in;
+	sc_port<simple_bus_blocking_if> bus_port;
 
 	/* *******************************************************************
 	// LOCAL VARIABLES

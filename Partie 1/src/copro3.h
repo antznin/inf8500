@@ -10,7 +10,7 @@ SC_MODULE(copro3)
 	// MODULE PORTS
 	******************************************************************** */
 
-	sc_buffer<Packet*> packet_in;
+	sc_in<Packet*> packet_in;
 	sc_out<bool> ack;
 	// Signal indiquant au display qu'il y a un message à traiter
 	sc_out<bool> msg_valid;

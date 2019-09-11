@@ -27,7 +27,7 @@ SC_MODULE(interconnexion)
 
 	//////// Interface avec le coprocesseur 3 ////////
 	// Sortie du paquet à transmettre au coprocesseur 3
-	sc_buffer<Packet*> packet_out;
+	sc_out<Packet*> packet_out3;
 	sc_in<bool> packet_next3;
 
 

@@ -9,6 +9,7 @@ void interconnexion::pkt_dispatch(void){
 	while (true)
 	{
 
+		packet_next = true;
 		wait(packet_ready.posedge_event()); // attendre packet_ready
 
 		//Recupération du paquet
@@ -17,6 +18,7 @@ void interconnexion::pkt_dispatch(void){
 		//Lecture de l'adresse du paquet
 		addr = pkt.getAddress();
 
+		packet_next = false;
 
 		//Utiliser la bonne méthode d'envoi selon l'adresse
 		switch (addr){
