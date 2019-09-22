@@ -16,7 +16,13 @@ int i=0;
 		wait(50, SC_NS);
 
 		// Générer un nombre aléatoire entre 0 et 255.
-		nba =  (rand() % 63)*4;
+		nba =  (rand() % 95)*4;
+		if nba > 71 && nba < 95
+			nba = 71;
+		if nba > 167 && nba < 192
+			nba = 167;
+		if nba > 263 && nba < 287
+			nba = 263;
 		
 		// Générer un nouveau paquet et l'envoyer au coprocesseur
 		// dont le numéro a été généré aléatoirement
