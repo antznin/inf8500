@@ -16,7 +16,7 @@ int i=0;
 		wait(50, SC_NS);
 
 		// Générer un nombre aléatoire entre 1 et 3.
-		nba = 3; // + (rand() % (3));
+		nba = 2; // + (rand() % (3));
 		
 		// Générer un nouveau paquet et l'envoyer à un coprocesseur
 		// dont le numéro a été généré aléatoirement
@@ -31,7 +31,8 @@ int i=0;
 		packet_ready = true;
 		
 		cout << "GEN : Attente paquet recu" << endl;
-		wait(); // Attendre la désassertion de next_packet
+		wait(next_packet.negedge_event()); // Attendre la désassertion de next_packet
+		cout << "GEN : Paquet recu" << endl;
 		packet_ready = false;
 		
 		delete pkt;

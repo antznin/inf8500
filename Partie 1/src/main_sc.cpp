@@ -35,6 +35,7 @@ int sc_main( int argc, char* argv[] )
 
 	// Connexions entre interconnexion et copro2 
 	sc_fifo<Packet*> fifo;
+	sc_signal<bool> packet_next2;
 
 	// Connexions entre interconnexion et copro3 
 	sc_buffer<Packet*> packet_RS3;
@@ -67,9 +68,9 @@ int sc_main( int argc, char* argv[] )
 	//------------------------------------------
 
 	the_pkt_gen(packet_next, packet_ready, packet_RS);
-	interconnexion(packet_ready, packet_RS, packet_next, packet_RS1, ready1, packet_next1, fifo, packet_RS3, packet_next3);
+	interconnexion(packet_ready, packet_RS, packet_next, packet_RS1, ready1, packet_next1, fifo, packet_next2, packet_RS3, packet_next3);
 	cop1(packet_RS1, ready1, packet_next1, msg_valid, display_message, display_packet, display_ready);
-	cop2(fifo, msg_valid, display_message, display_packet, display_ready);
+	cop2(fifo, packet_next2, msg_valid, display_message, display_packet, display_ready);
 	cop3(packet_RS3, packet_next3, msg_valid, display_message, display_packet, display_ready);
 	monitor(msg_valid, display_message, display_packet, display_ready);
 

@@ -24,6 +24,7 @@ SC_MODULE(interconnexion)
 	//////// Interface avec le corocesseur 2 ////////
 	// Sortie du paquet à transmettre au coprocesseur 2
 	sc_fifo_out<Packet*> fifo_out;
+	sc_in<bool> packet_next2;
 
 	//////// Interface avec le coprocesseur 3 ////////
 	// Sortie du paquet à transmettre au coprocesseur 3

@@ -10,6 +10,7 @@ void interconnexion::pkt_dispatch(void){
 	{
 
 		packet_next = true;
+		cout << "INT : attente packet_ready" << endl;
 		wait(packet_ready.posedge_event()); // attendre packet_ready
 
 		//Recupération du paquet
@@ -46,7 +47,10 @@ void interconnexion::pkt_send1(void){
 
 void interconnexion::pkt_send2(void){
 	
+	cout << "INT : envoie paquet cop2" << endl;
 	fifo_out.write(&pkt);
+	cout << "INT : paquet cop2 envoye" << endl;
+	wait(packet_next2.posedge_event());
 
 }
 

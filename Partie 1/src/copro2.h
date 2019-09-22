@@ -10,6 +10,7 @@ SC_MODULE(copro2)
 	// MODULE PORTS
 	******************************************************************** */
 	sc_fifo_in<Packet*> fifo_in;
+	sc_out<bool> ack;
 	// Signal indiquant au display qu'il y a un message à traiter
 	sc_out<bool> msg_valid;
 	// Sortie d'une chaîne de caractères pour le display

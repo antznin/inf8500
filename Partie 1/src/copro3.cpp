@@ -9,7 +9,7 @@ void copro3::pkt_display()
 	{
 		msg_valid = false; //Indique qu'il n'y a plus de paquets valides pour display et qu'il faut recommencer un cycle
 		
-		//Recupération du paquet généré par l'interconnexion
+
 		ack = false; 
 		cout << "COPRO3 : Attente paquet pret" << endl;
 		wait(packet_in.value_changed_event()); // Attendre ready == true
