@@ -1,6 +1,6 @@
 #include "copro1_adapt_slave.h"
 
-void copro1_adapt_slave::~copro1_adapt_slave()
+copro1_adapt_slave::~copro1_adapt_slave()
 {
 	//A COMPLETER
 	if (MEM) delete [] MEM;
@@ -12,11 +12,11 @@ void copro1_adapt_slave::~copro1_adapt_slave()
 /* 	//A COMPLETER */
 /* } */
 
-/* simple_bus_status copro1_adapt_slave::read(int *data, unsigned int address) */
-/* { */
-/* 	//DO NOTHING (UNIMPLEMENTED) */
-/* 	return SIMPLE_BUS_ERROR; */
-/* } */
+simple_bus_status copro1_adapt_slave::read(int *data, unsigned int address)
+{
+	//DO NOTHING (UNIMPLEMENTED)
+	return SIMPLE_BUS_ERROR;
+}
 simple_bus_status copro1_adapt_slave::write(int *data, unsigned int address)
 {
 	//A COMPLETER
@@ -34,21 +34,25 @@ simple_bus_status copro1_adapt_slave::write(int *data, unsigned int address)
 	return SIMPLE_BUS_WAIT;
 }
 
-void copro1_adapt_slave::dispatch()
-{
-	//A COMPLETER
-}
+/* void copro1_adapt_slave::dispatch() */
+/* { */
+/* 	//A COMPLETER */
+/* } */
 unsigned int  copro1_adapt_slave::start_address() const
 {
 	//A COMPLETER
-	return 0;
+	return m_start_address;
 }
 unsigned int  copro1_adapt_slave::end_address() const
 {
 	//A COMPLETER
-	return 95;
+	return m_end_address;
 }
 void copro1_adapt_slave::pkt_send1(void){
 	//A COMPLETER
-	packet = MEM; 
+	ready = false;
+	packet = (Packet *)MEM;
+	pkt_out = *packet;
+	ready = true;
+	wait(ack.posedge_event);
 }

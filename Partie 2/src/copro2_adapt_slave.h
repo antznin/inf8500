@@ -18,7 +18,10 @@ public:
 	******************************************************************** */
 	sc_in_clk clock;
 
-	//A COMPLETER
+	// Connexions entre adapteur et copro
+	sc_fifo_out<Packet*> fifo_out;
+	sc_in<bool> ack;
+	
 
 	/* *******************************************************************
 	// MODULE METHODS
@@ -55,6 +58,7 @@ public:
 		SC_METHOD(access_time);
 		dont_initialize();
 		//A COMPLETER
+		sensitive << ack << clock.pos();
 
 
 	}

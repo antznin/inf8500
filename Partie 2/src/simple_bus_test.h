@@ -40,6 +40,16 @@
 
 #include "simple_bus.h"
 #include "simple_bus_arbiter.h"
+#include "packet.h"
+#include "copro1.h"
+#include "copro2.h"
+#include "copro3.h"
+#include "copro1_adapt_slave.h"
+#include "copro2_adapt_slave.h"
+#include "copro3_adapt_slave.h"
+#include "packet_gen.h"
+#include "packet_gen_adapt_master.h"
+#include "display.h"
 
 
 SC_MODULE(simple_bus_test)
@@ -52,13 +62,16 @@ SC_MODULE(simple_bus_test)
 	sc_clock C1;
 
 	// Signaux entre Gen et Routeur
-	//A COMPLETER
+	sc_signal<Packet*> pkt_RS;
 
 	// Signaux entre adaptateur de coprocesseur 1 et coprocesseur 1
 	//A COMPLETER
+	sc_signal<Packet*> pkt_RS1;
+	sc_signal<bool> ack1;
 
 	// Signaux entre adaptateur de coprocesseur 2 et coprocesseur 2
-	//A COMPLETER
+	sc_fifo<Packet*> fifo;
+	sc_signal<bool> ack2;
 
 	// Signaux entre adaptateur de coprocesseur 3 et coprocesseur 3
 	//A COMPLETER
@@ -72,17 +85,17 @@ SC_MODULE(simple_bus_test)
 
 
 	// module instances
-	packet_gen						   *gen;
-	packet_gen_adapt				   *packet_gen_adapt;
-	simple_bus					       *bus;
-	simple_bus_arbiter                 *arbiter;
-	copro1							   *copro1
-	copro1_adapt					   *copro1_adapt;
-	copro2                             *copro1
-	copro2_adapt					   *copro2_adapt;
-	copro3                             *copro3
-	copro3_adapt					   *copro3_adapt;	
-	display							   *dply;
+	packet_gen              *gen;
+	packet_gen_adapt_master *master;
+	simple_bus              *bus;
+	simple_bus_arbiter      *arbiter;
+	copro1                  *mcopro1;
+	copro1_adapt_slave      *slave1;
+	copro2                  *mcopro2;
+	copro2_adapt_slave      *slave2;
+	copro3                  *mcopro3;
+	copro3_adapt_slave      *slave3;
+	display                 *dply;
 
 	//A COMPLETER
 
@@ -101,10 +114,15 @@ SC_MODULE(simple_bus_test)
 		bus = new simple_bus("bus");
 		arbiter = new simple_bus_arbiter("arbiter");
 		gen = new packet_gen("packet_gen");
-		copro1 = new station("copro1");
+		mcopro1 = new copro1("copro1");
+		mcopro2 = new copro2("copro2");
 		dply = new display("display");
 
 		//A COMPLETER
+		master = new packet_gen_adapt_master("master", 1, 0, false, 300);
+		slave1 = new copro1_adapt_slave("slave1", 0, 95, 1);
+		slave2 = new copro2_adapt_slave("slave2", 96, 191, 1);
+		/* slave3 = new copro3_adapt_slave("slave3"); */
 
 		// connect instances
 		
@@ -115,20 +133,37 @@ SC_MODULE(simple_bus_test)
 		gen->next_packet(next_packet);
 		gen->packet_out(packet_GR);
 
-		copro1->packet_out(packet_DS);
-		copro1->ready(ready_DS);
-		copro1->ack(ack_DS);
-		copro1->msg_valid(msg_valid);
-		copro1->output_msg(display_message);
-		copro1->output_pkt(display_packet);
-		copro1->display_ready(display_ready);
+		mcopro1->packet_out(packet_RS);
+		mcopro1->ready(ready1);
+		mcopro1->ack(ack1);
+		mcopro1->msg_valid(msg_valid);
+		mcopro1->output_msg(display_message);
+		mcopro1->output_pkt(display_packet);
+		mcopro1->display_ready(display_ready);
+
+		slave1->clock(C1);
+		slave1->pkt_out(packet_RS);
+		slave1->ready(ready1);
+		slave1->ack(ack1);
 		
 		dply->msg_valid(msg_valid);
 		dply->input_message(display_message);
 		dply->input_packet(display_packet);
 		dply->display_ready(display_ready);
+		
 
 		//A COMPLETER
+		master->clock(C1);
+		master->pkt_in(pkt_RS);
+
+		mcopro2->fifo_in(fifo);
+		mcopro2->ack(ack2);
+
+		slave2->clock(C1);
+		slave2->fifo_out(fifo);
+		slave2->ack(ack2);
+		
+
 
 	}
 

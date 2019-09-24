@@ -21,6 +21,9 @@ public:
 
 	//A COMPLETER
 
+	sc_out<bool> ready;
+	sc_in<bool> ack;	
+
 	/* *******************************************************************
 	// MODULE METHODS
 	******************************************************************** */
@@ -56,6 +59,7 @@ public:
 		SC_METHOD(access_time);
 		dont_initialize();
 		//A COMPLETER
+		sensitive << ack << clock.pos();
 
 
 	}
