@@ -127,9 +127,9 @@ SC_MODULE(simple_bus_test)
 
 		//A COMPLETER
 		master = new packet_gen_adapt_master("master", 1, 0, false, 300);
-		slave1 = new copro1_adapt_slave("slave1", 0, 95, 1);
-		slave2 = new copro2_adapt_slave("slave2", 96, 191, 1);
-		slave3 = new copro3_adapt_slave("slave3", 192, 287, 1);
+		slave1 = new copro1_adapt_slave("slave1", 0, 95, 0);
+		slave2 = new copro2_adapt_slave("slave2", 96, 191, 0);
+		slave3 = new copro3_adapt_slave("slave3", 192, 287, 0);
 
 		// connect instances
 		

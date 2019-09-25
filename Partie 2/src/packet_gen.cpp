@@ -21,7 +21,7 @@ void packet_gen::generate( void )
 	{
  		packet_ready = false;
 		cout << "GEN : attente du bus pret" << endl;
-		wait(next_packet.posedge_event()); // Attendre l'assertion de next_packet
+		wait(); // Attendre l'assertion de next_packet
 		
 		wait(50, SC_NS);
 
@@ -46,13 +46,15 @@ void packet_gen::generate( void )
 		packet_out = pkt;
 		cout << "GEN : Envoi du paquet au bus" << endl;
 		packet_ready = true;
+
 		
 		cout << "GEN : Attente paquet recu" << endl;
-		wait(); // Attendre la désassertion de next_packet
+		wait(next_packet.negedge_event()); // Attendre la désassertion de next_packet
+		cout << "GEN : next_packet deasserte" << endl;
 		packet_ready = false;
 		
 		delete pkt;
-	i++;
+		i++;
 	}
 	
 }

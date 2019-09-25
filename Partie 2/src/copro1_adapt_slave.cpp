@@ -31,16 +31,21 @@ simple_bus_status copro1_adapt_slave::write(int *data, unsigned int address)
 {
 	//A COMPLETER
 	// accept a new call if m_wait_count < 0)
+	cout << "ADAPT_SLAVE 1 : m_wait_count : " << m_wait_count << endl;
 	if (m_wait_count < 0)
 	{
-	  m_wait_count = m_nr_wait_states;
-	  return SIMPLE_BUS_WAIT;
+		m_wait_count = m_nr_wait_states;
+		return SIMPLE_BUS_WAIT;
 	}
 	if (m_wait_count == 0)
 	{
 		
+		MEM = (unsigned int *)malloc((m_end_address - m_start_address) * sizeof(unsigned int));
 	  	MEM[(address - m_start_address)/4] = *data;
-		packet = new Packet(&MEM[(address - m_start_address)/4]);  
+		cout << "ADAPT_SLAVE 1 : compt = " << compt << endl;
+		compt = compt + 1;
+		packet = new Packet(&(MEM[(address - m_start_address)/4]));  
+		cout << "ADAPT_SLAVE 1 : Triggering received" << endl;
 		received.notify();
 		
 	  	return SIMPLE_BUS_OK;
@@ -67,6 +72,7 @@ void copro1_adapt_slave::pkt_send1(void){
 	//A COMPLETER
 	while (true) {
 		wait(received);
+		cout << "ADAPT_SLAVE 1 : Received triggered" << endl;
 		ready = false;
 		pkt_out = packet;
 		ready = true;

@@ -18,6 +18,7 @@ public:
 	******************************************************************** */
 	sc_in_clk clock;
 	sc_out<Packet*> pkt_out;
+	sc_event received;
 
 	//A COMPLETER
 
@@ -55,13 +56,15 @@ public:
 		, m_nr_wait_states(nr_wait_states)
 		, packet_dispatched(1)
 		, m_wait_count(-1)
+		, compt(0)
 	{
 		/* SC_THREAD(dispatch); */
 		//A COMPLETER
 		/* SC_METHOD(access_time); */
 		dont_initialize();
 		//A COMPLETER
-		sensitive << ack << clock.pos();
+		SC_THREAD(pkt_send1);
+		sensitive << ack << received; 
 
 
 	}
@@ -81,7 +84,7 @@ private:
 	unsigned int m_end_address;
 	int m_wait_count;
 	unsigned int m_nr_wait_states;
-	sc_event received;
+	int compt;
 };
 
 #endif
