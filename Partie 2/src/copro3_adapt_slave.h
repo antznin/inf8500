@@ -27,9 +27,9 @@ public:
 	// MODULE METHODS
 	******************************************************************** */
 	// Attente du communicateur prêt (METHOD)
-	void access_time(void); 
+	/* void access_time(void); */ 
 	// thread de dispatch réveillée lorsqu'un paquet est prêt (THREAD)
-	void dispatch(void);
+	/* void dispatch(void); */
 	// Slave Interface (Méthodes de l'interface à implémenter)
 	simple_bus_status read(int *data, unsigned int address);
 	simple_bus_status write(int *data, unsigned int address);
@@ -54,10 +54,11 @@ public:
 		, packet_dispatched(1)
 		, m_wait_count(-1)
 	{
-		SC_THREAD(dispatch);
+		/* SC_THREAD(dispatch); */
 		//A COMPLETER
-		SC_METHOD(access_time);
+		/* SC_METHOD(access_time); */
 		dont_initialize();
+		sensitive << ack << clock.pos();
 		//A COMPLETER
 
 

@@ -122,6 +122,7 @@ SC_MODULE(simple_bus_test)
 		gen       = new packet_gen("packet_gen");
 		mcopro1   = new copro1("copro1");
 		mcopro2   = new copro2("copro2");
+		mcopro3   = new copro3("copro3");
 		dply      = new display("display");
 
 		//A COMPLETER
@@ -133,6 +134,9 @@ SC_MODULE(simple_bus_test)
 		// connect instances
 		
 		bus->clock(C1);
+		bus->slave_port(*slave1);
+		bus->slave_port(*slave2);
+		bus->slave_port(*slave3);
 		bus->arbiter_port(*arbiter);
 
 		gen->packet_ready(packet_ready);
@@ -140,6 +144,7 @@ SC_MODULE(simple_bus_test)
 		gen->packet_out(pkt_RS);
 
 		master->clock(C1);
+		master->bus_port(*bus);
 		master->pkt_in(pkt_RS);
 		master->packet_ready(packet_ready);
 		master->next_packet(next_packet);

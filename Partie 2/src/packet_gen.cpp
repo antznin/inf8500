@@ -27,13 +27,14 @@ void packet_gen::generate( void )
 
 		// Générer un nombre aléatoire entre 0 et 255.
 		/* CHECK(gen.next()); */
-		nba =  (rand() % 95)*4;
+		nba =  (rand() % 95)*3;
 		if (nba > 72 && nba < 96)
 			nba = 72;
 		if (nba > 168 && nba < 192)
 			nba = 168;
 		if (nba > 264 && nba < 288)
 			nba = 264;
+		nba = 0;
 		cout << "GEN : Random address : " << nba << endl;
 		
 		// Générer un nouveau paquet et l'envoyer au coprocesseur

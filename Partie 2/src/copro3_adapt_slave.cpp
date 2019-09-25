@@ -6,11 +6,11 @@ copro3_adapt_slave::~copro3_adapt_slave()
 	MEM = (unsigned int *)0;
 }
 
-void copro3_adapt_slave::access_time()
-{
-	//A COMPLETER
-	return;
-}
+/* void copro3_adapt_slave::access_time() */
+/* { */
+/* 	//A COMPLETER */
+/* 	return; */
+/* } */
 
 bool copro3_adapt_slave::direct_read(int *data, unsigned int address)
 {
@@ -45,11 +45,11 @@ simple_bus_status copro3_adapt_slave::write(int *data, unsigned int address)
   	  }
   	return SIMPLE_BUS_WAIT;
 }
-void copro3_adapt_slave::dispatch()
-{
-	//A COMPLETER
-	return;
-}
+/* void copro3_adapt_slave::dispatch() */
+/* { */
+/* 	//A COMPLETER */
+/* 	return; */
+/* } */
 unsigned int  copro3_adapt_slave::start_address() const
 {
 	return m_start_address;
