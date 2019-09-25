@@ -4,13 +4,23 @@ copro1_adapt_slave::~copro1_adapt_slave()
 {
 	//A COMPLETER
 	if (MEM) delete [] MEM;
-  	MEM = (int *)0;
+  	MEM = (unsigned int *)0;
 }
 
-/* void copro1_adapt_slave::access_time() */
-/* { */
-/* 	//A COMPLETER */
-/* } */
+void copro1_adapt_slave::access_time()
+{
+	//A COMPLETER
+	return;
+}
+bool copro1_adapt_slave::direct_read(int *data, unsigned int address)
+{
+  return true;
+}
+
+bool copro1_adapt_slave::direct_write(int *data, unsigned int address)
+{
+  return true;
+}
 
 simple_bus_status copro1_adapt_slave::read(int *data, unsigned int address)
 {
@@ -28,16 +38,21 @@ simple_bus_status copro1_adapt_slave::write(int *data, unsigned int address)
 	}
 	if (m_wait_count == 0)
 	{
-	  MEM[(address - m_start_address)/4] = *data;
-	  return SIMPLE_BUS_OK;
+		
+	  	MEM[(address - m_start_address)/4] = *data;
+		packet = new Packet(&MEM[(address - m_start_address)/4]);  
+		received.notify();
+		
+	  	return SIMPLE_BUS_OK;
 	}
 	return SIMPLE_BUS_WAIT;
 }
 
-/* void copro1_adapt_slave::dispatch() */
-/* { */
-/* 	//A COMPLETER */
-/* } */
+void copro1_adapt_slave::dispatch()
+{
+	//A COMPLETER
+	return;
+}
 unsigned int  copro1_adapt_slave::start_address() const
 {
 	//A COMPLETER
@@ -50,9 +65,11 @@ unsigned int  copro1_adapt_slave::end_address() const
 }
 void copro1_adapt_slave::pkt_send1(void){
 	//A COMPLETER
-	ready = false;
-	packet = (Packet *)MEM;
-	pkt_out = *packet;
-	ready = true;
-	wait(ack.posedge_event);
+	while (true) {
+		wait(received);
+		ready = false;
+		pkt_out = packet;
+		ready = true;
+		wait(ack.posedge_event());
+	}
 }

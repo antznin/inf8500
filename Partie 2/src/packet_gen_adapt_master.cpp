@@ -6,17 +6,18 @@ void packet_gen_adapt_master::pkt_dispatch(void){
 
 	unsigned int addr;
 	simple_bus_status status;
-	unsigned int length = 0x20;
-	Packet data[length];
+	unsigned int length = 6; // 6 words = 24 bytes
+	int data[length];
 
 	while (true)
 	{
 		
 		cout << "GEN ADAPT: Attente paquet" << endl;
-		wait();
+		next_packet = true;
+		wait(packet_ready.posedge_event());
 		cout << "GEN ADAPT: Paquet recu" << endl;
 		
-		data = pkt_in; // pointeur sur le paquet
+		memcpy(data, pkt_in, 24);
 		pkt = *pkt_in;
 		addr = pkt.getAddress();
 
@@ -27,6 +28,7 @@ void packet_gen_adapt_master::pkt_dispatch(void){
 		sb_fprintf(stdout, "%g %s : blocking-write failed at address %x\n",
 			   sc_time_stamp().to_double(), name(), m_address);
 
+		next_packet = false;
 		wait(m_timeout, SC_NS);
 	}
 }

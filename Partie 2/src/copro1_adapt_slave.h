@@ -34,6 +34,8 @@ public:
 	// Slave Interface (Méthodes de l'interface à implémenter)
 	simple_bus_status read(int *data, unsigned int address);
 	simple_bus_status write(int *data, unsigned int address);
+	bool direct_read(int *data, unsigned int address);
+	bool direct_write(int *data, unsigned int address);
 	unsigned int start_address() const;
 	unsigned int end_address() const;
 
@@ -79,6 +81,7 @@ private:
 	unsigned int m_end_address;
 	int m_wait_count;
 	unsigned int m_nr_wait_states;
+	sc_event received;
 };
 
 #endif

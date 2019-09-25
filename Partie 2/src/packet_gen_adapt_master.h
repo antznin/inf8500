@@ -15,6 +15,8 @@ SC_MODULE(packet_gen_adapt_master)
 	sc_in_clk clock;
 	sc_in<Packet*> pkt_in;
 	sc_port<simple_bus_blocking_if> bus_port;
+	sc_out<bool> next_packet;
+	sc_in<bool> packet_ready;
 
 	/* *******************************************************************
 	// LOCAL VARIABLES
@@ -46,7 +48,7 @@ SC_MODULE(packet_gen_adapt_master)
 	{
 		// process declaration
 		SC_THREAD(pkt_dispatch);
-		sensitive << clock.pos();
+		sensitive << clock.pos() << packet_ready;
 		
 	}
 private:
