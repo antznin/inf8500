@@ -21,6 +21,7 @@ public:
 	// Connexions entre adapteur et copro
 	sc_fifo_out<Packet*> fifo_out;
 	sc_in<bool> ack;
+	sc_event received;
 	
 
 	/* *******************************************************************
@@ -54,13 +55,15 @@ public:
 		, m_nr_wait_states(nr_wait_states)
 		, packet_dispatched(1)
 		, m_wait_count(-1)
+		, compt(0)
 	{
 		/* SC_THREAD(dispatch); */
 		//A COMPLETER
 		/* SC_METHOD(access_time); */
 		dont_initialize();
 		//A COMPLETER
-		sensitive << ack << clock.pos();
+		SC_THREAD(pkt_send2);
+		sensitive << ack << received; 
 
 
 	}
@@ -80,7 +83,8 @@ private:
 	unsigned int m_end_address;
 	int m_wait_count;
 	unsigned int m_nr_wait_states;
-	sc_event received;
+	int compt;
+	unsigned int m_current_packet_start_address;
 };
 
 #endif

@@ -31,22 +31,35 @@ simple_bus_status copro1_adapt_slave::write(int *data, unsigned int address)
 {
 	//A COMPLETER
 	// accept a new call if m_wait_count < 0)
-	cout << "ADAPT_SLAVE 1 : m_wait_count : " << m_wait_count << endl;
 	if (m_wait_count < 0)
 	{
 		m_wait_count = m_nr_wait_states;
+		cout << "ADAPT_SLAVE 1 : test" << endl;
 		return SIMPLE_BUS_WAIT;
 	}
 	if (m_wait_count == 0)
 	{
 		
-		MEM = (unsigned int *)malloc((m_end_address - m_start_address) * sizeof(unsigned int));
+		if (compt == 0) {
+			m_current_packet_start_address = address - m_start_address;
+			MEM = (unsigned int *)malloc((m_end_address - m_start_address) * sizeof(unsigned int));
+			cout << "ADAPT_SLAVE 1 : compt est a zero " << endl;
+		}
+
+		cout << "ADAPT_SLAVE 1 : address " << address << endl;
+		/* cout << "ADAPT_SLAVE 1 : address de MEM " << address - m_start_address << endl; */
 	  	MEM[(address - m_start_address)/4] = *data;
-		cout << "ADAPT_SLAVE 1 : compt = " << compt << endl;
+		cout << "ADAPT_SLAVE 1 : contenu de data " << std::bitset<32>(*data) << " " << hex << *data << endl;
 		compt = compt + 1;
-		packet = new Packet(&(MEM[(address - m_start_address)/4]));  
-		cout << "ADAPT_SLAVE 1 : Triggering received" << endl;
-		received.notify();
+		cout << "ADAPT_SLAVE 1 : compt = " << compt << endl;
+
+		if (compt == 6) {
+			compt = 0;
+			packet = new Packet(&(MEM[(m_current_packet_start_address)/4]));  
+			cout << "ADAPT_SLAVE 1 : Packet créé, addr =" << (*packet).getAddress() << endl;
+			cout << "ADAPT_SLAVE 1 : Notifying via received" << endl;
+			received.notify();
+		}
 		
 	  	return SIMPLE_BUS_OK;
 	}
@@ -72,7 +85,7 @@ void copro1_adapt_slave::pkt_send1(void){
 	//A COMPLETER
 	while (true) {
 		wait(received);
-		cout << "ADAPT_SLAVE 1 : Received triggered" << endl;
+		cout << "ADAPT_SLAVE 1 : Notified via received" << endl;
 		ready = false;
 		pkt_out = packet;
 		ready = true;

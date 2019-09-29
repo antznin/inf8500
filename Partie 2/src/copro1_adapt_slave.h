@@ -85,6 +85,7 @@ private:
 	int m_wait_count;
 	unsigned int m_nr_wait_states;
 	int compt;
+	unsigned int m_current_packet_start_address;
 };
 
 #endif

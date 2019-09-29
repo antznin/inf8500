@@ -1,0 +1,1 @@
+export SYSTEMC_HOME="$HOME/Documents/POLY/INF8500/systemc-2.3.1"
