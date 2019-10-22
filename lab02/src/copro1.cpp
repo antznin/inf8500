@@ -39,6 +39,9 @@ void copro1::pkt_display()
 
   pkt.putPacket(ptr_int_r);   // Display peut maintenant afficher le resultat du tri
 
+	// envoi au moniteur
+	packet_out.write(&pkt);
+
 		
 		// Envoi du paquet au display
 		msg_valid = true; //Indique qu'un nouveau paquet est disponible pour le display

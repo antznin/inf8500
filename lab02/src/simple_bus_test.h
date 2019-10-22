@@ -176,6 +176,7 @@ SC_MODULE(simple_bus_test)
 		copro1_adapt->valid(ready_CP1);
 		copro1_adapt->next(ack_CP1);
 		copro1_adapt->packet_in(packet_copro1_adapt_monitor);
+		copro1_adapt->bus_port(*bus);
 
 		bus->slave_port(*copro1_adapt);
 
@@ -215,6 +216,8 @@ SC_MODULE(simple_bus_test)
 
 		mtr->clock(C1);
 		mtr->packet_in_gen(packet_gen_monitor);
+
+		bus->slave_port(*mtr);
 	}
 
 	// destructor

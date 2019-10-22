@@ -30,6 +30,7 @@ void packet_gen::generate( void )
 		cout << rand_addr << endl;
 		
 		nba = rand_addr.address;
+		nba = nba - (nba % 4); 
 
 		// G�n�rer un nouveau paquet et l'envoyer au coprocesseur
 		// dont le num�ro a �t� g�n�r� al�atoirement
@@ -37,7 +38,7 @@ void packet_gen::generate( void )
 		//affichage du paquet envoy�
 		cout << "GEN : Un paquet a ete envoye a l'adresse 0x" << hex << nba << endl;
 		cout << *pkt;
-		cout << "Ecriture non bloquante au monitor :" << endl;
+		cout << "GEN : Ecriture non bloquante au monitor :" << endl;
 		packet_monitor.nb_write(pkt);
 		packet_out = pkt;
 		cout << "GEN : Envoi du paquet au bus" << endl;

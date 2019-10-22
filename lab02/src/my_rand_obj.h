@@ -96,7 +96,7 @@ class my_rand_obj : public rand_obj {
 };
 
 // Le main a servi pour faire le test du code
-int main(int argc, char* argv[]) {
+/*int main(int argc, char* argv[]) {
   crave::init("crave.cfg");
   my_rand_obj obj;
   for (int i = 0; i < 50; i++) {
@@ -105,4 +105,4 @@ int main(int argc, char* argv[]) {
   };
 
   return 0;
-}
+}*/

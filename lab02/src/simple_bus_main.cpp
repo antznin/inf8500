@@ -35,14 +35,12 @@
 
 #include "systemc.h"
 #include "simple_bus_test.h"
-#include <crave/ConstrainedRandom.hpp>
+using namespace std;
 
 int sc_main(int, char **)
 {
+cout << "test" << endl;
   simple_bus_test top("top");
-
-  crave::init("crave.cfg");
-  crave::set_global_seed(1234567890);  // set the global seed for consistent results
 
   sc_start(10000, SC_MS);
 

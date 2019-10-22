@@ -1,4 +1,5 @@
 #include "monitor.h"
+#include "Scoreboard.h"
 
 monitor::~monitor()
 {
@@ -72,12 +73,16 @@ unsigned int  monitor::end_address() const
 
 void monitor::compare_pkt(void)
 {
+	ScoreBoard scb;
 	// read the packet from packet_gen
-	*pkt_gen = *packet_in_gen.read();
-	cout << "Received from packet_gen :" << endl;
-	cout << *pkt_gen << endl;
-	cout << "Received from copro :" << endl;
-	cout << *pkt_copro << endl;
+	pkt_gen = packet_in_gen.read();
+	//cout << "MONITOR : Received from packet_gen :" << endl;
+	//cout << *pkt_gen << endl;
+	//cout << "MONITOR : Received from copro :" << endl;
+	//cout << *pkt_copro << endl;
+	cout << "MONITOR : Comparing..." << endl;
+	scb.check_int((int *)(*pkt_copro).getPacket(), (int *)(*pkt_gen).getPacket(), (*pkt_gen).getDir());
+	
 
 }
 

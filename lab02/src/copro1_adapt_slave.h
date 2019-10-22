@@ -6,11 +6,11 @@
 #include "simple_bus_types.h"
 #include "simple_bus_slave_if.h"
 #include "packet.h"
+#include "simple_bus_blocking_if.h"
 
 
 class copro1_adapt_slave
 	: public simple_bus_slave_if,
-	public simple_bus_blocking_if,
 	public sc_module
 {
 public:
@@ -29,6 +29,7 @@ public:
 	sc_fifo_in<Packet*> packet_in;
 	// Paquet local au module coprocesseur 1
         Packet pkt;
+	sc_port<simple_bus_blocking_if> bus_port;
 
 
 
@@ -47,18 +48,6 @@ public:
 
 	bool direct_read(int *data, unsigned int address);
 	bool direct_write(int *data, unsigned int address);
-
-	simple_bus_status burst_read(unsigned int unique_priority
-		, int *data
-		, unsigned int start_address
-		, unsigned int length
-		, bool lock);
-
-	simple_bus_status burst_write(unsigned int unique_priority
-		, int *data
-		, unsigned int start_address
-		, unsigned int length
-		, bool lock);
 
 	void pkt_send1(void);
 

@@ -8,6 +8,7 @@
 #include "simple_bus_types.h"
 #include "simple_bus_slave_if.h"
 
+
 class monitor:
 	public simple_bus_slave_if,
 	public sc_module

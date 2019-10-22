@@ -7,6 +7,8 @@
 
 // A été concu pour plusieurs types, on va utilser seulement int
 
+#ifndef SCOREBOARD_H
+#define SCOREBOARD_H
 
 #include "include.h"
 //use templeted class
@@ -15,6 +17,8 @@ class ScoreBoard {
   void check_int(int * a ,int * b, bool direction);
   void check_char(char * a ,char * b, bool direction);
   void check_lgint(long int * a , long int * b, bool direction);
+
+  ScoreBoard(void) {};
 };
 
 void ScoreBoard::check_int(int * a ,int * b, bool direction)
@@ -116,3 +120,4 @@ std::cout<<"Score board called"<<std::endl;
 
 }
 
+#endif
