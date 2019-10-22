@@ -10,7 +10,7 @@
 
 class copro1_adapt_slave
 	: public simple_bus_slave_if,
-	: public simple_bus_blocking_if,
+	public simple_bus_blocking_if,
 	public sc_module
 {
 public:
