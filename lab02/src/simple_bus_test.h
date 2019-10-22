@@ -42,6 +42,7 @@
 #include "simple_bus_arbiter.h"
 #include "packet.h"
 #include "display.h"
+#include "monitor.h"
 
 #include "packet_gen.h"
 #include "packet_gen_adapt_master.h"
@@ -92,7 +93,7 @@ SC_MODULE(simple_bus_test)
 	sc_fifo<Packet*> packet_copro1_adapt_monitor;
 	sc_fifo<Packet*> packet_copro2_adapt_monitor;
 	sc_fifo<Packet*> packet_copro3_adapt_monitor;
-
+	sc_fifo<Packet*> packet_gen_monitor;
 
 
 	// module instances
@@ -107,6 +108,7 @@ SC_MODULE(simple_bus_test)
 	copro3                   *copro_3;
 	copro3_adapt_slave	 *copro3_adapt;	
 	display			 *dply;
+	monitor			 *mtr;
 
 
 	// constructor
@@ -137,6 +139,8 @@ SC_MODULE(simple_bus_test)
 		copro_3 = new copro3("copro3");
 		copro3_adapt = new copro3_adapt_slave("copro3_adapt", 0x200, 0x2FF, 1);
 
+		mtr = new monitor("mtr", 0x300, 0x3FF, 2);
+
 
 		// connect instances	
 		bus->clock(C1);
@@ -145,6 +149,7 @@ SC_MODULE(simple_bus_test)
 		gen->packet_ready(ready_GR);
 		gen->next_packet(next_GR);
 		gen->packet_out(packet_GR);
+		gen->packet_monitor(packet_gen_monitor);
 
 		dply->msg_valid(msg_valid);
 		dply->input_message(display_message);
@@ -207,6 +212,9 @@ SC_MODULE(simple_bus_test)
 		copro3_adapt->packet_in(packet_copro3_adapt_monitor);
 
 		bus->slave_port(*copro3_adapt);
+
+		mtr->clock(C1);
+		mtr->packet_in_gen(packet_gen_monitor);
 	}
 
 	// destructor

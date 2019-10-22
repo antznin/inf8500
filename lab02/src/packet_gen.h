@@ -17,6 +17,8 @@ SC_MODULE(packet_gen)
 	// Sortie du paquet � transmettre au routeur
   sc_out<Packet*> packet_out;
 
+  sc_fifo_out<Packet*> packet_monitor;
+
 	/* *******************************************************************
 	// LOCAL VARIABLES
 	******************************************************************** */

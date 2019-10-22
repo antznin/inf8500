@@ -10,6 +10,7 @@
 
 class copro1_adapt_slave
 	: public simple_bus_slave_if,
+	: public simple_bus_blocking_if,
 	public sc_module
 {
 public:
@@ -46,6 +47,18 @@ public:
 
 	bool direct_read(int *data, unsigned int address);
 	bool direct_write(int *data, unsigned int address);
+
+	simple_bus_status burst_read(unsigned int unique_priority
+		, int *data
+		, unsigned int start_address
+		, unsigned int length
+		, bool lock);
+
+	simple_bus_status burst_write(unsigned int unique_priority
+		, int *data
+		, unsigned int start_address
+		, unsigned int length
+		, bool lock);
 
 	void pkt_send1(void);
 

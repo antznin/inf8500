@@ -37,6 +37,8 @@ void packet_gen::generate( void )
 		//affichage du paquet envoy�
 		cout << "GEN : Un paquet a ete envoye a l'adresse 0x" << hex << nba << endl;
 		cout << *pkt;
+		cout << "Ecriture non bloquante au monitor :" << endl;
+		packet_monitor.nb_write(pkt);
 		packet_out = pkt;
 		cout << "GEN : Envoi du paquet au bus" << endl;
 		packet_ready = true;

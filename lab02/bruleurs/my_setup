@@ -1,0 +1,7 @@
+
+##export SYSTEMC_HOME=/usr/local/systemc-2.3.1a
+##export SystemC_LIBRARIES=/usr/local/systemc-2.3.1a/lib-linux64
+##export SystemC_INCLUDE_DIRS=/usr/local/systemc-2.3.1a/include
+export FC4SC_HOME=/home/guy/fc4sc-master
+export CRAVE_HOME="/home/guy/crave"
+export SYSTEMC_HOME=${CRAVE_HOME}/deps/systemc-2.3.1

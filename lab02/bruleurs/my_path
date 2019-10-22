@@ -1,0 +1,4 @@
+export CRAVE_HOME="/home/guy/crave"
+export LD_LIBRARY_PATH="/home/guy/crave/deps/lingeling-ayv-86bf266-140429/lib":"/home/guy/crave/deps/boolector-2.2.0/lib":"/home/guy/crave/deps/boost-1_55_0-fs/lib":"/home/guy/crave/deps/glog-git-0.3.3/lib":"/home/guy/crave/deps/cudd-3.0.0/lib":"/home/guy/crave/deps/minisat-git/lib":"/home/guy/crave/build/root/lib"
+
+

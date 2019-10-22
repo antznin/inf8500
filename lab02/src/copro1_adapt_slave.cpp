@@ -84,8 +84,8 @@ void copro1_adapt_slave::to_monitor(void)
 	while(1) 
 	{
 		cout << "COPRO1_ADAPT : Attente paquet trie" << endl;
-                pkt = *packet_in.read(); // Attendre la lecture bloquante
-                cout << "COPRO1_ADAPT : Recuperation du paquet trie" << endl;
+		pkt = *packet_in.read(); // Attendre la lecture bloquante
+		cout << "COPRO1_ADAPT : Recuperation du paquet trie" << endl;
 		// write du paquet au moniteur
 		cout << pkt;
 	}

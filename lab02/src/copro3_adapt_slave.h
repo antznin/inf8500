@@ -42,6 +42,18 @@ public:
 	unsigned int start_address() const;
 	unsigned int end_address() const;
 
+	simple_bus_status burst_read(unsigned int unique_priority
+		, int *data
+		, unsigned int start_address
+		, unsigned int length
+		, bool lock);
+
+	simple_bus_status burst_write(unsigned int unique_priority
+		, int *data
+		, unsigned int start_address
+		, unsigned int length
+		, bool lock);
+
 	bool direct_read(int *data, unsigned int address);
 	bool direct_write(int *data, unsigned int address);
 
