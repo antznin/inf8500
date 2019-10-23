@@ -194,6 +194,7 @@ SC_MODULE(simple_bus_test)
 		copro2_adapt->valid(ready_CP2);
 		copro2_adapt->next(ack_CP2);
 		copro2_adapt->packet_in(packet_copro2_adapt_monitor);
+		copro2_adapt->bus_port(*bus);
 
 		bus->slave_port(*copro2_adapt);
 
@@ -211,6 +212,7 @@ SC_MODULE(simple_bus_test)
 		copro3_adapt->valid(ready_CP3);
 		copro3_adapt->next(ack_CP3);
 		copro3_adapt->packet_in(packet_copro3_adapt_monitor);
+		copro3_adapt->bus_port(*bus);
 
 		bus->slave_port(*copro3_adapt);
 

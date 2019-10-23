@@ -14,6 +14,7 @@
 #include <string.h>
 
 #include <crave/ConstrainedRandom.hpp>
+#include <crave/experimental/Experimental.hpp>
 using crave::Generator;
 using crave::distribution;
 using crave::dist;
@@ -23,6 +24,10 @@ using crave::randv;
 using crave::rand_vec;
 using crave::_i;
 using crave::reference;
+
+using namespace crave;
+
+#define MAX 2000
 
 ////////////////////////////////////////////////////////////////////////////////////
 /////////////  Testcase To Generate Data in Ascending Order   //////////////////////
@@ -41,6 +46,36 @@ class Test_Random_Asc_data_gen: public rand_obj {
   int iarray[MAX];
   int * runphase(int a);
 };
+
+/************* NE MARCHE PAS ********************
+
+erreur :
+(E549) uncaught exception: check failed: obj.randomize()
+In file: ../../../../src/sysc/kernel/sc_except.cpp:98
+In process: top.packet_gen.generate @ 3162 ns
+
+struct item_Asc : public crv_sequence_item {
+  crv_variable<unsigned> x;
+
+  crv_constraint constr{ x() > x(prev), x() <= x(prev) * 2 };
+
+  item_Asc(crv_object_name) {}
+};
+
+int * Test_Random_Asc_data_gen::runphase(int a){
+
+  item_Asc obj("obj");
+  static unsigned int n = 0;
+  
+  for(int i = 0;i<MAX;i++)
+  {
+    CHECK(obj.randomize());
+    n += obj.x;
+    iarray[i] = n;
+  }
+  return iarray;
+}
+*************************************************/
 
 int * Test_Random_Asc_data_gen::runphase(int a){
   randv<int> x = NULL,y=NULL ,z=NULL;
@@ -61,6 +96,7 @@ int * Test_Random_Asc_data_gen::runphase(int a){
   }
   return iarray;
 }
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -210,25 +246,21 @@ public:
   int * p ;
 
   int * runphase(int a);
-  void chk_testcase(int arg, std::string str);
+  void chk_testcase(std::string str);
 };
 
-void TestBase::chk_testcase(int argc,std::string str){
+void TestBase::chk_testcase(std::string str){
 
- if(argc <= 2) 
-  { 
-   std::cout<<"Please Specify Testcase name : argv[2] is Null"<<std::endl; 
-   assert(0);
-  }
  if(str.compare("Full_Random") == 0)
   {
+   cout << "TESTCASE : Full Random" << endl; 
    Test_Rand_Full_data_gen * c;
    c = new Test_Rand_Full_data_gen;
    c->next();
    p = c->runphase(20);
    direction = c->direction; 
   }
-  else if(str.compare("Radom_Asc") == 0)
+  else if(str.compare("Random_Asc") == 0)
   {
    Test_Random_Asc_data_gen * c;
    c = new Test_Random_Asc_data_gen;

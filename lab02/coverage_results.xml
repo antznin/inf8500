@@ -32,7 +32,7 @@ alias="string"
 moduleName="input_cvg" 
 parentInstanceId="0" 
 >
-<ucis:id file="src/input_cvg.h" line="72" inlineCount="1" />
+<ucis:id file="src/input_cvg.h" line="70" inlineCount="1" />
 <ucis:covergroupCoverage weight="1" >
 <ucis:cgInstance name="input_cvg_1" 
 key="3" 
@@ -42,37 +42,37 @@ excluded="false"
 <ucis:options weight="1" goal="100" comment="" at_least="1" auto_bin_max="10" detect_overlap="0" cross_num_print_missing="0" per_instance="0" />
 <ucis:cgId cgName="input_cvg_1" moduleName="INST_PARENT_MODULE">
 <ucis:cginstSourceId file="1" line="1" inlineCount="1"/>
-<ucis:cgSourceId file="src/input_cvg.h" line="72" inlineCount="1"/>
+<ucis:cgSourceId file="src/input_cvg.h" line="70" inlineCount="1"/>
 </ucis:cgId>
 <ucis:coverpoint name="copro_cvp" key="KEY" exprString="copro">
 <ucis:options weight="1" goal="100" comment="" at_least="1" auto_bin_max="10" detect_overlap="0" />
 <ucis:coverpointBin name="copro 1" 
-type="default" alias="48">
+type="default" alias="68">
 <ucis:range 
 from="0" 
 to ="0"
 >
-<ucis:contents coverageCount="48"></ucis:contents>
+<ucis:contents coverageCount="68"></ucis:contents>
 </ucis:range>
 
 </ucis:coverpointBin>
 <ucis:coverpointBin name="copro 2" 
-type="default" alias="23">
+type="default" alias="43">
 <ucis:range 
 from="1" 
 to ="1"
 >
-<ucis:contents coverageCount="23"></ucis:contents>
+<ucis:contents coverageCount="43"></ucis:contents>
 </ucis:range>
 
 </ucis:coverpointBin>
 <ucis:coverpointBin name="copro 3" 
-type="default" alias="36">
+type="default" alias="28">
 <ucis:range 
 from="2" 
 to ="2"
 >
-<ucis:contents coverageCount="36"></ucis:contents>
+<ucis:contents coverageCount="28"></ucis:contents>
 </ucis:range>
 
 </ucis:coverpointBin>
@@ -81,52 +81,52 @@ to ="2"
 <ucis:coverpoint name="data_order_cvp" key="KEY" exprString="data_order">
 <ucis:options weight="1" goal="100" comment="" at_least="1" auto_bin_max="10" detect_overlap="0" />
 <ucis:coverpointBin name="random_desc" 
-type="default" alias="24">
+type="default" alias="25">
 <ucis:range 
 from="0" 
 to ="0"
 >
-<ucis:contents coverageCount="24"></ucis:contents>
+<ucis:contents coverageCount="25"></ucis:contents>
 </ucis:range>
 
 </ucis:coverpointBin>
 <ucis:coverpointBin name="random_asc" 
-type="default" alias="22">
+type="default" alias="26">
 <ucis:range 
 from="1" 
 to ="1"
 >
-<ucis:contents coverageCount="22"></ucis:contents>
+<ucis:contents coverageCount="26"></ucis:contents>
 </ucis:range>
 
 </ucis:coverpointBin>
 <ucis:coverpointBin name="random_full" 
-type="default" alias="23">
+type="default" alias="29">
 <ucis:range 
 from="2" 
 to ="2"
 >
-<ucis:contents coverageCount="23"></ucis:contents>
+<ucis:contents coverageCount="29"></ucis:contents>
 </ucis:range>
 
 </ucis:coverpointBin>
 <ucis:coverpointBin name="continues_asc" 
-type="default" alias="17">
+type="default" alias="36">
 <ucis:range 
 from="3" 
 to ="3"
 >
-<ucis:contents coverageCount="17"></ucis:contents>
+<ucis:contents coverageCount="36"></ucis:contents>
 </ucis:range>
 
 </ucis:coverpointBin>
 <ucis:coverpointBin name="continues_desc" 
-type="default" alias="21">
+type="default" alias="23">
 <ucis:range 
 from="4" 
 to ="4"
 >
-<ucis:contents coverageCount="21"></ucis:contents>
+<ucis:contents coverageCount="23"></ucis:contents>
 </ucis:range>
 
 </ucis:coverpointBin>
@@ -135,22 +135,22 @@ to ="4"
 <ucis:coverpoint name="sort_dir_cvp" key="KEY" exprString="sort_dir">
 <ucis:options weight="1" goal="100" comment="" at_least="1" auto_bin_max="10" detect_overlap="0" />
 <ucis:coverpointBin name="up" 
-type="default" alias="55">
+type="default" alias="67">
 <ucis:range 
 from="1" 
 to ="1"
 >
-<ucis:contents coverageCount="55"></ucis:contents>
+<ucis:contents coverageCount="67"></ucis:contents>
 </ucis:range>
 
 </ucis:coverpointBin>
 <ucis:coverpointBin name="down" 
-type="default" alias="52">
+type="default" alias="72">
 <ucis:range 
 from="0" 
 to ="0"
 >
-<ucis:contents coverageCount="52"></ucis:contents>
+<ucis:contents coverageCount="72"></ucis:contents>
 </ucis:range>
 
 </ucis:coverpointBin>
@@ -170,7 +170,7 @@ type="default"
 <ucis:index>0</ucis:index>
 <ucis:index>0</ucis:index>
 <ucis:contents 
-coverageCount="5"> 
+coverageCount="7"> 
 </ucis:contents> 
 </ucis:crossBin> 
 <ucis:crossBin 
@@ -182,7 +182,7 @@ type="default"
 <ucis:index>0</ucis:index>
 <ucis:index>1</ucis:index>
 <ucis:contents 
-coverageCount="4"> 
+coverageCount="6"> 
 </ucis:contents> 
 </ucis:crossBin> 
 <ucis:crossBin 
@@ -194,7 +194,7 @@ type="default"
 <ucis:index>0</ucis:index>
 <ucis:index>2</ucis:index>
 <ucis:contents 
-coverageCount="3"> 
+coverageCount="1"> 
 </ucis:contents> 
 </ucis:crossBin> 
 <ucis:crossBin 
@@ -204,6 +204,78 @@ type="default"
 > 
 <ucis:index>0</ucis:index>
 <ucis:index>1</ucis:index>
+<ucis:index>0</ucis:index>
+<ucis:contents 
+coverageCount="6"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>0</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:contents 
+coverageCount="1"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>0</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:contents 
+coverageCount="3"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>0</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:index>0</ucis:index>
+<ucis:contents 
+coverageCount="5"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>0</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:contents 
+coverageCount="5"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>0</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:contents 
+coverageCount="3"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>0</ucis:index>
+<ucis:index>3</ucis:index>
 <ucis:index>0</ucis:index>
 <ucis:contents 
 coverageCount="9"> 
@@ -215,82 +287,10 @@ key="0"
 type="default" 
 > 
 <ucis:index>0</ucis:index>
-<ucis:index>1</ucis:index>
-<ucis:index>1</ucis:index>
-<ucis:contents 
-coverageCount="3"> 
-</ucis:contents> 
-</ucis:crossBin> 
-<ucis:crossBin 
-name=""  
-key="0" 
-type="default" 
-> 
-<ucis:index>0</ucis:index>
-<ucis:index>1</ucis:index>
-<ucis:index>2</ucis:index>
-<ucis:contents 
-coverageCount="2"> 
-</ucis:contents> 
-</ucis:crossBin> 
-<ucis:crossBin 
-name=""  
-key="0" 
-type="default" 
-> 
-<ucis:index>0</ucis:index>
-<ucis:index>2</ucis:index>
-<ucis:index>0</ucis:index>
-<ucis:contents 
-coverageCount="6"> 
-</ucis:contents> 
-</ucis:crossBin> 
-<ucis:crossBin 
-name=""  
-key="0" 
-type="default" 
-> 
-<ucis:index>0</ucis:index>
-<ucis:index>2</ucis:index>
-<ucis:index>1</ucis:index>
-<ucis:contents 
-coverageCount="1"> 
-</ucis:contents> 
-</ucis:crossBin> 
-<ucis:crossBin 
-name=""  
-key="0" 
-type="default" 
-> 
-<ucis:index>0</ucis:index>
-<ucis:index>2</ucis:index>
-<ucis:index>2</ucis:index>
-<ucis:contents 
-coverageCount="6"> 
-</ucis:contents> 
-</ucis:crossBin> 
-<ucis:crossBin 
-name=""  
-key="0" 
-type="default" 
-> 
-<ucis:index>0</ucis:index>
-<ucis:index>3</ucis:index>
-<ucis:index>0</ucis:index>
-<ucis:contents 
-coverageCount="2"> 
-</ucis:contents> 
-</ucis:crossBin> 
-<ucis:crossBin 
-name=""  
-key="0" 
-type="default" 
-> 
-<ucis:index>0</ucis:index>
 <ucis:index>3</ucis:index>
 <ucis:index>1</ucis:index>
 <ucis:contents 
-coverageCount="2"> 
+coverageCount="5"> 
 </ucis:contents> 
 </ucis:crossBin> 
 <ucis:crossBin 
@@ -314,7 +314,7 @@ type="default"
 <ucis:index>4</ucis:index>
 <ucis:index>0</ucis:index>
 <ucis:contents 
-coverageCount="3"> 
+coverageCount="6"> 
 </ucis:contents> 
 </ucis:crossBin> 
 <ucis:crossBin 
@@ -326,7 +326,7 @@ type="default"
 <ucis:index>4</ucis:index>
 <ucis:index>1</ucis:index>
 <ucis:contents 
-coverageCount="3"> 
+coverageCount="5"> 
 </ucis:contents> 
 </ucis:crossBin> 
 <ucis:crossBin 
@@ -338,7 +338,7 @@ type="default"
 <ucis:index>4</ucis:index>
 <ucis:index>2</ucis:index>
 <ucis:contents 
-coverageCount="3"> 
+coverageCount="2"> 
 </ucis:contents> 
 </ucis:crossBin> 
 <ucis:crossBin 
@@ -362,7 +362,7 @@ type="default"
 <ucis:index>0</ucis:index>
 <ucis:index>1</ucis:index>
 <ucis:contents 
-coverageCount="1"> 
+coverageCount="3"> 
 </ucis:contents> 
 </ucis:crossBin> 
 <ucis:crossBin 
@@ -373,6 +373,30 @@ type="default"
 <ucis:index>1</ucis:index>
 <ucis:index>0</ucis:index>
 <ucis:index>2</ucis:index>
+<ucis:contents 
+coverageCount="2"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:index>0</ucis:index>
+<ucis:contents 
+coverageCount="9"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:index>1</ucis:index>
 <ucis:contents 
 coverageCount="5"> 
 </ucis:contents> 
@@ -384,102 +408,6 @@ type="default"
 > 
 <ucis:index>1</ucis:index>
 <ucis:index>1</ucis:index>
-<ucis:index>0</ucis:index>
-<ucis:contents 
-coverageCount="3"> 
-</ucis:contents> 
-</ucis:crossBin> 
-<ucis:crossBin 
-name=""  
-key="0" 
-type="default" 
-> 
-<ucis:index>1</ucis:index>
-<ucis:index>1</ucis:index>
-<ucis:index>1</ucis:index>
-<ucis:contents 
-coverageCount="2"> 
-</ucis:contents> 
-</ucis:crossBin> 
-<ucis:crossBin 
-name=""  
-key="0" 
-type="default" 
-> 
-<ucis:index>1</ucis:index>
-<ucis:index>1</ucis:index>
-<ucis:index>2</ucis:index>
-<ucis:contents 
-coverageCount="3"> 
-</ucis:contents> 
-</ucis:crossBin> 
-<ucis:crossBin 
-name=""  
-key="0" 
-type="default" 
-> 
-<ucis:index>1</ucis:index>
-<ucis:index>2</ucis:index>
-<ucis:index>0</ucis:index>
-<ucis:contents 
-coverageCount="4"> 
-</ucis:contents> 
-</ucis:crossBin> 
-<ucis:crossBin 
-name=""  
-key="0" 
-type="default" 
-> 
-<ucis:index>1</ucis:index>
-<ucis:index>2</ucis:index>
-<ucis:index>1</ucis:index>
-<ucis:contents 
-coverageCount="2"> 
-</ucis:contents> 
-</ucis:crossBin> 
-<ucis:crossBin 
-name=""  
-key="0" 
-type="default" 
-> 
-<ucis:index>1</ucis:index>
-<ucis:index>2</ucis:index>
-<ucis:index>2</ucis:index>
-<ucis:contents 
-coverageCount="4"> 
-</ucis:contents> 
-</ucis:crossBin> 
-<ucis:crossBin 
-name=""  
-key="0" 
-type="default" 
-> 
-<ucis:index>1</ucis:index>
-<ucis:index>3</ucis:index>
-<ucis:index>0</ucis:index>
-<ucis:contents 
-coverageCount="4"> 
-</ucis:contents> 
-</ucis:crossBin> 
-<ucis:crossBin 
-name=""  
-key="0" 
-type="default" 
-> 
-<ucis:index>1</ucis:index>
-<ucis:index>3</ucis:index>
-<ucis:index>1</ucis:index>
-<ucis:contents 
-coverageCount="4"> 
-</ucis:contents> 
-</ucis:crossBin> 
-<ucis:crossBin 
-name=""  
-key="0" 
-type="default" 
-> 
-<ucis:index>1</ucis:index>
-<ucis:index>3</ucis:index>
 <ucis:index>2</ucis:index>
 <ucis:contents 
 coverageCount="2"> 
@@ -491,7 +419,7 @@ key="0"
 type="default" 
 > 
 <ucis:index>1</ucis:index>
-<ucis:index>4</ucis:index>
+<ucis:index>2</ucis:index>
 <ucis:index>0</ucis:index>
 <ucis:contents 
 coverageCount="6"> 
@@ -503,10 +431,82 @@ key="0"
 type="default" 
 > 
 <ucis:index>1</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:contents 
+coverageCount="4"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:contents 
+coverageCount="6"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>3</ucis:index>
+<ucis:index>0</ucis:index>
+<ucis:contents 
+coverageCount="9"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>3</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:contents 
+coverageCount="6"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>3</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:contents 
+coverageCount="4"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>4</ucis:index>
+<ucis:index>0</ucis:index>
+<ucis:contents 
+coverageCount="5"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
 <ucis:index>4</ucis:index>
 <ucis:index>1</ucis:index>
 <ucis:contents 
-coverageCount="1"> 
+coverageCount="3"> 
 </ucis:contents> 
 </ucis:crossBin> 
 <ucis:crossBin 
@@ -518,7 +518,7 @@ type="default"
 <ucis:index>4</ucis:index>
 <ucis:index>2</ucis:index>
 <ucis:contents 
-coverageCount="5"> 
+coverageCount="2"> 
 </ucis:contents> 
 </ucis:crossBin> 
 <ucis:userAttr 

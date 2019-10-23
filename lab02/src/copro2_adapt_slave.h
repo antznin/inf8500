@@ -6,6 +6,8 @@
 #include "simple_bus_types.h"
 #include "simple_bus_slave_if.h"
 #include "packet.h"
+#include "simple_bus_blocking_if.h"
+
 
 class copro2_adapt_slave
 	: public simple_bus_slave_if,
@@ -25,8 +27,10 @@ public:
 	sc_in<bool> next;
 
 	sc_fifo_in<Packet*> packet_in;
-        // Paquet local au module coprocesseur 2
+	// Paquet local au module coprocesseur 1
         Packet pkt;
+	sc_port<simple_bus_blocking_if> bus_port;
+
 
 
 	/* *******************************************************************
@@ -41,18 +45,6 @@ public:
 	simple_bus_status write(int *data, unsigned int address);
 	unsigned int start_address() const;
 	unsigned int end_address() const;
-
-	simple_bus_status burst_read(unsigned int unique_priority
-		, int *data
-		, unsigned int start_address
-		, unsigned int length
-		, bool lock);
-
-	simple_bus_status burst_write(unsigned int unique_priority
-		, int *data
-		, unsigned int start_address
-		, unsigned int length
-		, bool lock);
 
 	bool direct_read(int *data, unsigned int address);
 	bool direct_write(int *data, unsigned int address);
@@ -75,14 +67,14 @@ public:
 		, packet_dispatched(1)
 		, m_wait_count(-1)
 	{
-		SC_THREAD(dispatch);
+		SC_THREAD(dispatch);	// On aurait pu utiliser une méthode aussi mais j'ai laissé SC_THREAD avec boucle infinie
 		sensitive << start_dispatch;
 
 		SC_METHOD(wait_loop);
 		dont_initialize();	// wait_loop ne sera pas appelé une première fois
 		sensitive << clock.pos();
-
-		SC_THREAD(to_monitor);
+		
+		SC_THREAD(to_monitor);	
 
 		sc_assert(m_start_address <= m_end_address);
     sc_assert((m_end_address-m_start_address+1)%4 == 0);
@@ -112,3 +104,4 @@ private:
 };
 
 #endif
+

@@ -2,6 +2,7 @@
 #include "packet_gen.h"
 #include "my_rand_obj.h"
 #include "input_cvg.h"
+#include "testcase.h"
 
 // SC_THREAD(generate)
 // sensitive(next_packet)
@@ -13,6 +14,8 @@ void packet_gen::generate(void)
 	int offset_copro;
 	my_rand_obj rand_addr;
 	input_cvg cvg;
+	TestBase test;
+	std::string order;
 
 	while (cvg.get_inst_coverage() < 100)
 	{
@@ -31,6 +34,22 @@ void packet_gen::generate(void)
 
 		CHECK(rand_addr.next());
 		cout << rand_addr << endl;
+		cout << "GEN : " << rand_addr.data_order_value() << endl; 
+
+		switch (rand_addr.data_order_value()) {
+			case 0: order = "Random_Dsc";
+				break;
+			case 1: order = "Random_Asc";
+				break;
+			case 2: order = "Full_Random";
+				break;
+			case 3: order = "Continues_Asc";
+				break;
+			case 4: order = "Continues_Desc";
+				break;
+		}
+		cout << "PACKET_GEN : order = " << order << endl;
+		test.chk_testcase(order);
 
 		cvg.sample(rand_addr.copro_value(), rand_addr.data_order_value(), rand_addr.sort_dir_value());
 
@@ -41,6 +60,16 @@ void packet_gen::generate(void)
 		// dont le num�ro a �t� g�n�r� al�atoirement
 		pkt = new Packet(nba, 1 + i);
 		//affichage du paquet envoy�
+
+		// On met les donnees generees par le testcase dans le payload du pkt 
+		unsigned int * newPayload; 
+		newPayload = (unsigned int *)calloc(16, sizeof(unsigned int));
+		int k;
+		for (k = 0; k < 16; k++)
+			newPayload[k] = (unsigned int)test.p[k];
+		(*pkt).putPacket(newPayload);
+
+
 		cout << "GEN : Un paquet a ete envoye a l'adresse 0x" << hex << nba << endl;
 		cout << *pkt;
 		cout << "GEN : Ecriture non bloquante au monitor :" << endl;
@@ -58,6 +87,6 @@ void packet_gen::generate(void)
 	}
 
 	fc4sc::global::coverage_save("coverage_results.xml");
-	std::cout << "nombre d'execution requise pour 100%: " << cvg.nb_de_cov << std::endl;
+	std::cout << "nombre d'execution requise pour 100%: " << dec << cvg.nb_de_cov << std::endl;
 	exit(0);
 }

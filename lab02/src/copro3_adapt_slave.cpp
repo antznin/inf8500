@@ -47,15 +47,20 @@ simple_bus_status copro3_adapt_slave::write(int *data, unsigned int address)
 
   return SIMPLE_BUS_WAIT;
 }
+
 void copro3_adapt_slave::dispatch()
 {
 	while(1) 
 	{	
 		wait(); // Attente évènement start_dispatch
+		cout << "COPRO3_ADAPT : TEST event dispatch" << endl;
 		packet = new Packet(&MEM[((m_current_packet_start_address - m_start_address) / 4)]);
+
 		pkt_send3();
 	}
+
 }
+
 unsigned int  copro3_adapt_slave::start_address() const
 {
 	return m_start_address;
@@ -77,18 +82,19 @@ void copro3_adapt_slave::pkt_send3(void)
 
 void copro3_adapt_slave::to_monitor(void)
 {
-        while(1)
-        {
-                cout << "COPRO3_ADAPT : Attente paquet trie" << endl;
-                pkt = *packet_in.read(); // Attendre la lecture bloquante
-                cout << "COPRO3_ADAPT : Recuperation du paquet trie" << endl;
-                // write du paquet au moniteur
-                cout << pkt;
-        }
+	simple_bus_status status;
+	int addr = 0x300, packet_size = 19;
+	while(1) 
+	{
+		cout << "COPRO3_ADAPT : Attente paquet trie" << endl;
+		pkt = *packet_in.read(); // Attendre la lecture bloquante
+		cout << "COPRO3_ADAPT : Recuperation du paquet trie" << endl;
+		// write du paquet au moniteur
+		cout << "COPRO3_ADAPT : Envoi burst_write" << endl;
+		status = bus_port->burst_write(1, (int*)pkt.getPacket(), addr, packet_size, false);
+		cout << pkt;
+	}
 }
-
-
-
 
 // Ajout Julien, sinon erreur à la compilation (comme dans l'exemple) :
 
@@ -101,3 +107,4 @@ bool copro3_adapt_slave::direct_write(int *data, unsigned int address)
 {
   return (write(data, address) == SIMPLE_BUS_OK);
 }
+
