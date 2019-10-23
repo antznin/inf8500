@@ -25,7 +25,7 @@
  
  *****************************************************************************/
 
- /*****************************************************************************
+/*****************************************************************************
 
   MODIFICATION LOG - modifiers, enter your name, affiliation, date and
   changes you are making here. 
@@ -55,68 +55,62 @@
 
 #include "fc4sc.hpp"
 
+class input_cvg : public covergroup
+{
 
+public:
+  int copro;
+  int data_order;
+  int sort_dir;
+  int nb_de_cov = 0;
+  //rand enum {random_desc, random_asc, random_full, continues_asc, continues_desc} data_order;
+  //rand enum {up, down} sort_dir;
 
-  class input_cvg : public covergroup {
+  // Must call parent constructor somewhere register a new cvg
+  CG_CONS(input_cvg)
+  {
+  }
 
-  public:
+  void sample(int copro, int data_order, int sort_dir)
+  {
 
-    int copro;
-    int data_order;
-    int sort_dir;
-    int nb_de_cov = 0;
-    //rand enum {random_desc, random_asc, random_full, continues_asc, continues_desc} data_order;
-    //rand enum {up, down} sort_dir;
+    this->copro = copro;
+    this->data_order = data_order;
+    this->sort_dir = sort_dir;
+    covergroup::sample();
+    nb_de_cov += 1;
+  }
 
-    // Must call parent constructor somewhere register a new cvg
-    CG_CONS(input_cvg) {
-    }
-
-    void  sample(int copro, int data_order , int sort_dir) {
-
-      this->copro = copro;
-      this->data_order = data_order;
-      this->sort_dir = sort_dir;
-      covergroup::sample();
-      nb_de_cov += 1;
-
-    }
-
-    COVERPOINT(int, copro_cvp, copro) {
-        bin<int>("copro 1", 0),
-        bin<int>("copro 2", 1),
-        bin<int>("copro 3", 2),
-    };
-
-    COVERPOINT(int, data_order_cvp, data_order) {
-        bin<int>("random_desc", 0),
-        bin<int>("random_asc", 1),
-        bin<int>("random_full", 2),
-        bin<int>("continues_asc", 3),
-	bin<int>("continues_desc", 4),
-    };
-
-    COVERPOINT(int, sort_dir_cvp, sort_dir) {
-        bin<int>("up", 1),
-        bin<int>("down", 0)
-    };
-
-    cross<int, int, int> reset_valid_cross = cross<int, int, int> (this, "Croisement des 3 parametres",
-        &copro_cvp,
-        &data_order_cvp,
-        &sort_dir_cvp
-    );
-
-
+  COVERPOINT(int, copro_cvp, copro){
+      bin<int>("copro 1", 0),
+      bin<int>("copro 2", 1),
+      bin<int>("copro 3", 2),
   };
 
- // fcov_bruleur cg_bruleur;
+  COVERPOINT(int, data_order_cvp, data_order){
+      bin<int>("random_desc", 0),
+      bin<int>("random_asc", 1),
+      bin<int>("random_full", 2),
+      bin<int>("continues_asc", 3),
+      bin<int>("continues_desc", 4),
+  };
 
- // SC_CTOR(m_coverture_bruleur)
- // {
- //     SC_METHOD(entry);
- //     dont_initialize();
- //     sensitive << CLK.pos();
- // }  
+  COVERPOINT(int, sort_dir_cvp, sort_dir){
+      bin<int>("up", 1),
+      bin<int>("down", 0)};
+
+  cross<int, int, int> reset_valid_cross = cross<int, int, int>(this, "Croisement des 3 parametres",
+                                                                &copro_cvp,
+                                                                &data_order_cvp,
+                                                                &sort_dir_cvp);
+};
+
+// fcov_bruleur cg_bruleur;
+
+// SC_CTOR(m_coverture_bruleur)
+// {
+//     SC_METHOD(entry);
+//     dont_initialize();
+//     sensitive << CLK.pos();
+// }
 //};
-

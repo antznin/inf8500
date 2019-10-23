@@ -22,7 +22,7 @@
   Original Author: Ric Hilderink, Synopsys, Inc., 2001-10-11
  
  *****************************************************************************/
- 
+
 /*****************************************************************************
  
   MODIFICATION LOG - modifiers, enter your name, affiliation, date and
