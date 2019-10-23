@@ -39,10 +39,13 @@ using namespace std;
 
 int sc_main(int, char **)
 {
-cout << "test" << endl;
+  crave::init("crave.cfg");
+  //crave::set_global_seed(12345);
+
+  // Demarrage du systeme
   simple_bus_test top("top");
 
-  sc_start(10000, SC_MS);
+  sc_start(1000, SC_MS);
 
   return 0;
 }

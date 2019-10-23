@@ -63,48 +63,50 @@
 
     int copro;
     int data_order;
-    int tri_order;
+    int sort_dir;
+    int nb_de_cov = 0;
     //rand enum {random_desc, random_asc, random_full, continues_asc, continues_desc} data_order;
-    //rand enum {up, down} tri_order;
+    //rand enum {up, down} sort_dir;
 
     // Must call parent constructor somewhere register a new cvg
     CG_CONS(input_cvg) {
     }
 
-    void  sample(int copro, int data_order , int tri_order) {
+    void  sample(int copro, int data_order , int sort_dir) {
 
       this->copro = copro;
       this->data_order = data_order;
-      this->tri_order = tri_order;
+      this->sort_dir = sort_dir;
       covergroup::sample();
       nb_de_cov += 1;
 
     }
 
     COVERPOINT(int, copro_cvp, copro) {
-        bin<int>("copro 1", 1),
-        bin<int>("copro 2", 2),
-        bin<int>("copro 3", 3),
+        bin<int>("copro 1", 0),
+        bin<int>("copro 2", 1),
+        bin<int>("copro 3", 2),
     };
 
     COVERPOINT(int, data_order_cvp, data_order) {
-        bin<int>("random_desc", 1),
-        bin<int>("random_asc", 2),
-        bin<int>("random_full", 3),
-        bin<int>("continues_asc", 4),
-	bin<int>("continues_desc", 5),
+        bin<int>("random_desc", 0),
+        bin<int>("random_asc", 1),
+        bin<int>("random_full", 2),
+        bin<int>("continues_asc", 3),
+	bin<int>("continues_desc", 4),
     };
 
-    COVERPOINT(int, tri_order_cvp, tri_order) {
+    COVERPOINT(int, sort_dir_cvp, sort_dir) {
         bin<int>("up", 1),
         bin<int>("down", 0)
     };
 
-    cross<int, int, int> reset_valid_cross = cross<int, int, int> (this, "croissement de 3 parametres",
+    cross<int, int, int> reset_valid_cross = cross<int, int, int> (this, "Croisement des 3 parametres",
         &copro_cvp,
         &data_order_cvp,
-        &tri_order_cvp
+        &sort_dir_cvp
     );
+
 
   };
 

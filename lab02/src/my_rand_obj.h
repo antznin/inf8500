@@ -29,7 +29,7 @@ class my_rand_obj : public rand_obj {
   randv<sort_dir_enum> 		sort_dir;
   randv<data_order_enum> 	data_order;
   randv<unsigned int> 		address;
-  int 				offset=19*4+1;  // nombre d'octets dans un mot+ 1		
+  int 				offset=19*4-1;  // nombre d'octets dans un mot+ 1		
 
   my_rand_obj(rand_obj* parent = 0) : rand_obj(parent), copro(this), sort_dir(this), data_order(this), address(this) {
     constraint( if_then(copro() == copro1 , address() >= 0 && address() <= 255-offset));
@@ -41,7 +41,20 @@ class my_rand_obj : public rand_obj {
   }
 
 
+    unsigned int copro_value() { 
+      return (copro);
+    };
+  
+    unsigned int data_order_value() { 
+      return (data_order);
+    };
+  
+    unsigned int sort_dir_value() { 
+      return (sort_dir);
+    };
+
   friend ostream& operator<<(ostream& os, my_rand_obj& obj) {
+    os << "RAND_OBJ : ";
     switch (obj.copro) {
       case copro1:
         os << "copro1";

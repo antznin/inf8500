@@ -81,7 +81,7 @@ void monitor::compare_pkt(void)
 	//cout << "MONITOR : Received from copro :" << endl;
 	//cout << *pkt_copro << endl;
 	cout << "MONITOR : Comparing..." << endl;
-	scb.check_int((int *)(*pkt_copro).getPacket(), (int *)(*pkt_gen).getPacket(), (*pkt_gen).getDir());
+	//scb.check_int((int *)(*pkt_copro).getPacket(), (int *)(*pkt_gen).getPacket(), (*pkt_gen).getDir());
 	
 
 }

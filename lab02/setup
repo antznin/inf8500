@@ -1,0 +1,3 @@
+export FC4SC_HOME=/home/guy/fc4sc-master
+export CRAVE_HOME="/home/guy/crave"
+export SYSTEMC_HOME=${CRAVE_HOME}/deps/systemc-2.3.1

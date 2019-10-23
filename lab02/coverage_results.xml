@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ucis:UCIS xmlns:ucis="http://www.w3.org/2001/XMLSchema-instance" ucisVersion="1.0"  writtenBy="$USER"
+ writtenTime="2008-09-29T03:49:45">
+<ucis:sourceFiles  fileName="string" id="201" />
+<ucis:historyNodes historyNodeId="200" 
+parentId="200" 
+logicalName="string" 
+physicalName="string" 
+kind="string" 
+testStatus="true" 
+simtime="1.051732E7" 
+timeunit="string" 
+runCwd="string" 
+cpuTime="1.051732E7" 
+seed="string" cmd="string" 
+args="string" compulsory="string" 
+date="2004-02-14T19:44:14" 
+userName="string" 
+cost="1000.00" 
+toolCategory="string" 
+ucisVersion="string" 
+vendorId="string" 
+vendorTool="string" 
+vendorToolVersion="string" 
+sameTests="42" comment="string" 
+>
+</ucis:historyNodes>
+<ucis:instanceCoverages name="string" 
+key="1" 
+instanceId="2" 
+alias="string" 
+moduleName="input_cvg" 
+parentInstanceId="0" 
+>
+<ucis:id file="src/input_cvg.h" line="72" inlineCount="1" />
+<ucis:covergroupCoverage weight="1" >
+<ucis:cgInstance name="input_cvg_1" 
+key="3" 
+alias="string" 
+excluded="false" 
+>
+<ucis:options weight="1" goal="100" comment="" at_least="1" auto_bin_max="10" detect_overlap="0" cross_num_print_missing="0" per_instance="0" />
+<ucis:cgId cgName="input_cvg_1" moduleName="INST_PARENT_MODULE">
+<ucis:cginstSourceId file="1" line="1" inlineCount="1"/>
+<ucis:cgSourceId file="src/input_cvg.h" line="72" inlineCount="1"/>
+</ucis:cgId>
+<ucis:coverpoint name="copro_cvp" key="KEY" exprString="copro">
+<ucis:options weight="1" goal="100" comment="" at_least="1" auto_bin_max="10" detect_overlap="0" />
+<ucis:coverpointBin name="copro 1" 
+type="default" alias="48">
+<ucis:range 
+from="0" 
+to ="0"
+>
+<ucis:contents coverageCount="48"></ucis:contents>
+</ucis:range>
+
+</ucis:coverpointBin>
+<ucis:coverpointBin name="copro 2" 
+type="default" alias="23">
+<ucis:range 
+from="1" 
+to ="1"
+>
+<ucis:contents coverageCount="23"></ucis:contents>
+</ucis:range>
+
+</ucis:coverpointBin>
+<ucis:coverpointBin name="copro 3" 
+type="default" alias="36">
+<ucis:range 
+from="2" 
+to ="2"
+>
+<ucis:contents coverageCount="36"></ucis:contents>
+</ucis:range>
+
+</ucis:coverpointBin>
+</ucis:coverpoint>
+
+<ucis:coverpoint name="data_order_cvp" key="KEY" exprString="data_order">
+<ucis:options weight="1" goal="100" comment="" at_least="1" auto_bin_max="10" detect_overlap="0" />
+<ucis:coverpointBin name="random_desc" 
+type="default" alias="24">
+<ucis:range 
+from="0" 
+to ="0"
+>
+<ucis:contents coverageCount="24"></ucis:contents>
+</ucis:range>
+
+</ucis:coverpointBin>
+<ucis:coverpointBin name="random_asc" 
+type="default" alias="22">
+<ucis:range 
+from="1" 
+to ="1"
+>
+<ucis:contents coverageCount="22"></ucis:contents>
+</ucis:range>
+
+</ucis:coverpointBin>
+<ucis:coverpointBin name="random_full" 
+type="default" alias="23">
+<ucis:range 
+from="2" 
+to ="2"
+>
+<ucis:contents coverageCount="23"></ucis:contents>
+</ucis:range>
+
+</ucis:coverpointBin>
+<ucis:coverpointBin name="continues_asc" 
+type="default" alias="17">
+<ucis:range 
+from="3" 
+to ="3"
+>
+<ucis:contents coverageCount="17"></ucis:contents>
+</ucis:range>
+
+</ucis:coverpointBin>
+<ucis:coverpointBin name="continues_desc" 
+type="default" alias="21">
+<ucis:range 
+from="4" 
+to ="4"
+>
+<ucis:contents coverageCount="21"></ucis:contents>
+</ucis:range>
+
+</ucis:coverpointBin>
+</ucis:coverpoint>
+
+<ucis:coverpoint name="sort_dir_cvp" key="KEY" exprString="sort_dir">
+<ucis:options weight="1" goal="100" comment="" at_least="1" auto_bin_max="10" detect_overlap="0" />
+<ucis:coverpointBin name="up" 
+type="default" alias="55">
+<ucis:range 
+from="1" 
+to ="1"
+>
+<ucis:contents coverageCount="55"></ucis:contents>
+</ucis:range>
+
+</ucis:coverpointBin>
+<ucis:coverpointBin name="down" 
+type="default" alias="52">
+<ucis:range 
+from="0" 
+to ="0"
+>
+<ucis:contents coverageCount="52"></ucis:contents>
+</ucis:range>
+
+</ucis:coverpointBin>
+</ucis:coverpoint>
+
+<ucis:cross name="Croisement des 3 parametres" key="KEY" >
+<ucis:options weight="1" goal="100" comment="" at_least="1" auto_bin_max="10" detect_overlap="0" />
+<ucis:crossExpr>sort_dir_cvp</ucis:crossExpr> 
+<ucis:crossExpr>data_order_cvp</ucis:crossExpr> 
+<ucis:crossExpr>copro_cvp</ucis:crossExpr> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>0</ucis:index>
+<ucis:index>0</ucis:index>
+<ucis:index>0</ucis:index>
+<ucis:contents 
+coverageCount="5"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>0</ucis:index>
+<ucis:index>0</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:contents 
+coverageCount="4"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>0</ucis:index>
+<ucis:index>0</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:contents 
+coverageCount="3"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>0</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:index>0</ucis:index>
+<ucis:contents 
+coverageCount="9"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>0</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:contents 
+coverageCount="3"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>0</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:contents 
+coverageCount="2"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>0</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:index>0</ucis:index>
+<ucis:contents 
+coverageCount="6"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>0</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:contents 
+coverageCount="1"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>0</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:contents 
+coverageCount="6"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>0</ucis:index>
+<ucis:index>3</ucis:index>
+<ucis:index>0</ucis:index>
+<ucis:contents 
+coverageCount="2"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>0</ucis:index>
+<ucis:index>3</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:contents 
+coverageCount="2"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>0</ucis:index>
+<ucis:index>3</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:contents 
+coverageCount="3"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>0</ucis:index>
+<ucis:index>4</ucis:index>
+<ucis:index>0</ucis:index>
+<ucis:contents 
+coverageCount="3"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>0</ucis:index>
+<ucis:index>4</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:contents 
+coverageCount="3"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>0</ucis:index>
+<ucis:index>4</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:contents 
+coverageCount="3"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>0</ucis:index>
+<ucis:index>0</ucis:index>
+<ucis:contents 
+coverageCount="6"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>0</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:contents 
+coverageCount="1"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>0</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:contents 
+coverageCount="5"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:index>0</ucis:index>
+<ucis:contents 
+coverageCount="3"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:contents 
+coverageCount="2"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:contents 
+coverageCount="3"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:index>0</ucis:index>
+<ucis:contents 
+coverageCount="4"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:contents 
+coverageCount="2"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:contents 
+coverageCount="4"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>3</ucis:index>
+<ucis:index>0</ucis:index>
+<ucis:contents 
+coverageCount="4"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>3</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:contents 
+coverageCount="4"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>3</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:contents 
+coverageCount="2"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>4</ucis:index>
+<ucis:index>0</ucis:index>
+<ucis:contents 
+coverageCount="6"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>4</ucis:index>
+<ucis:index>1</ucis:index>
+<ucis:contents 
+coverageCount="1"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:crossBin 
+name=""  
+key="0" 
+type="default" 
+> 
+<ucis:index>1</ucis:index>
+<ucis:index>4</ucis:index>
+<ucis:index>2</ucis:index>
+<ucis:contents 
+coverageCount="5"> 
+</ucis:contents> 
+</ucis:crossBin> 
+<ucis:userAttr 
+key="30" 
+type="int" 
+/> 
+</ucis:cross>
+
+</ucis:cgInstance>
+</ucis:covergroupCoverage>
+</ucis:instanceCoverages>
+</ucis:UCIS>

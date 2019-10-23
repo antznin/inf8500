@@ -1,6 +1,7 @@
 #include <systemc.h>
 #include "packet_gen.h"
 #include "my_rand_obj.h"
+#include "input_cvg.h"
 
 // SC_THREAD(generate)
 // sensitive(next_packet)
@@ -11,9 +12,11 @@ void packet_gen::generate( void )
 	int copro_numero;
 	int offset_copro;
 	my_rand_obj rand_addr;
+	input_cvg cvg;
 
-	while (i < 8)
+	while (cvg.get_inst_coverage() < 100)
 	{
+		cout << "COVERAGE : " << cvg.get_inst_coverage() << endl;
  		packet_ready = false;
 		cout << "GEN : attente du bus pret" << endl;
 		wait(); // Attendre l'assertion de next_packet
@@ -28,6 +31,8 @@ void packet_gen::generate( void )
 
 		CHECK(rand_addr.next());
 		cout << rand_addr << endl;
+		
+		cvg.sample(rand_addr.copro_value(), rand_addr.data_order_value(), rand_addr.sort_dir_value());
 		
 		nba = rand_addr.address;
 		nba = nba - (nba % 4); 
@@ -51,5 +56,9 @@ void packet_gen::generate( void )
 		delete pkt;
 		i++;
 	}
+
+	fc4sc::global::coverage_save("coverage_results.xml");
+  	std::cout << "nombre d'execution requise pour 100%: " <<  cvg.nb_de_cov << std::endl;
+	exit(0);
 	
 }
