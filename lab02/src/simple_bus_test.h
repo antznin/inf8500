@@ -237,6 +237,7 @@ SC_MODULE(simple_bus_test)
 		if (copro_2) { delete copro_2; copro_2 = 0; }
 		if (copro3_adapt) { delete copro3_adapt; copro3_adapt = 0; }
 		if (copro_3) { delete copro_3; copro_3 = 0; }
+		if (mtr) { delete mtr; mtr = 0; }
 	}
 
 }; // end class simple_bus_test
